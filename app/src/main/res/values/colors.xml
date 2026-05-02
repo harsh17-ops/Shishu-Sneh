@@ -1,0 +1,9 @@
+<resources>
+    <color name="teal_primary">#00695C</color>
+    <color name="orange_accent">#F57C00</color>
+    <color name="warm_background">#F9FBE7</color>
+    <color name="card_cream">#FFFCF2</color>
+    <color name="dark_background">#0B1714</color>
+    <color name="dark_surface">#10231F</color>
+    <color name="soft_red">#C62828</color>
+</resources>
