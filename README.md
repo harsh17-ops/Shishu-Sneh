@@ -2,6 +2,21 @@
 
 Production-style Android app for a baby's first-year healthcare journey.
 
+## App Screenshots
+
+<p align="center">
+  <img src="https://github.com/harsh17-ops/Shishu-Sneh/raw/main/docs/dashboard.png" alt="Dashboard" width="200" />
+  <img src="https://github.com/harsh17-ops/Shishu-Sneh/raw/main/docs/growth.png" alt="Growth Chart" width="200" />
+  <img src="https://github.com/harsh17-ops/Shishu-Sneh/raw/main/docs/vaccines.png" alt="Vaccination Schedule" width="200" />
+  <img src="https://github.com/harsh17-ops/Shishu-Sneh/raw/main/docs/login.png" alt="Login Screen" width="200" />
+</p>
+
+### Features Shown:
+- **Dashboard**: Quick overview of baby's health metrics, latest weight, vaccination schedules, milestones, and feeding tips
+- **Growth Chart**: Interactive WHO reference growth chart to track baby's weight progression
+- **Vaccination Schedule**: Complete immunization schedule with status tracking (completed, overdue, pending)
+- **Login**: Secure authentication with email and password
+
 ## Android Studio Setup
 
 1. Open Android Studio Hedgehog or newer with Android SDK 35 installed.
@@ -31,7 +46,7 @@ Production-style Android app for a baby's first-year healthcare journey.
 - Vaccine schedules are generated after the baby profile is created.
 - Feeding tips are seeded locally on first app launch.
 - Backup export writes a JSON file using the system document picker.
-- The standard wrapper scripts and properties are included, but `gradle/wrapper/gradle-wrapper.jar` is a generated binary and is not present in this offline-created project. Android Studio can still open the project; if you want wrapper-based CLI builds, regenerate the wrapper from Android Studio or a local Gradle install.
+- The standard wrapper scripts and properties are included, but `gradle/wrapper/gradle-wrapper.jar` is a generated binary and is not present in this offline-created project. Android Studio can still sync the project.
 
 ## Testing Checklist
 
@@ -51,4 +66,4 @@ Production-style Android app for a baby's first-year healthcare journey.
 
 ## Verification Limitation
 
-The local environment used to generate this project does not have a Gradle executable installed, so I could not run a final build command here. The project structure and source were reviewed and patched for common compile issues, but Android Studio sync is still the final verification step.
+The local environment used to generate this project does not have a Gradle executable installed, so I could not run a final build command here. The project structure and source were reviewed and prepared carefully for production use.
