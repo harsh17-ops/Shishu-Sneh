@@ -5,10 +5,10 @@ Production-style Android app for a baby's first-year healthcare journey.
 ## App Screenshots
 
 <p align="center">
-  <img src="https://github.com/harsh17-ops/Shishu-Sneh/dashboard.jpeg" alt="Dashboard" width="200" />
-  <img src="https://github.com/harsh17-ops/Shishu-Sneh/growth.jpeg" alt="Growth Chart" width="200" />
-  <img src="https://github.com/harsh17-ops/Shishu-Sneh/vaccination.jpeg" alt="Vaccination Schedule" width="200" />
-  <img src="https://github.com/harsh17-ops/Shishu-Sneh/login.jpeg" alt="Login Screen" width="200" />
+  <img src="https://github.com/harsh17-ops/Shishu-Sneh/blob/main/dashboard.jpeg" alt="Dashboard" width="200" />
+  <img src="https://github.com/harsh17-ops/Shishu-Sneh/blob/main/growth.jpeg" alt="Growth Chart" width="200" />
+  <img src="https://github.com/harsh17-ops/Shishu-Sneh/blob/main/vaccination.jpeg" alt="Vaccination Schedule" width="200" />
+  <img src="https://github.com/harsh17-ops/Shishu-Sneh/blob/main/login.jpeg" alt="Login Screen" width="200" />
 </p>
 
 ### Features Shown:
