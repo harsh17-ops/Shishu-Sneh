@@ -322,6 +322,5 @@ This project is open-source and available under the MIT License.
 
 ---
 
-**Live Demo**: [https://shishu-sneh.vercel.app](https://shishu-sneh.vercel.app)
 
 **Last Updated**: May 16, 2026
