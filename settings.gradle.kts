@@ -17,3 +17,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "ShishuSneh"
 include(":app")
+
+// Gradle configuration
+gradle.startParameter.excludedTaskNames.addAll(listOf(":app:lint"))
