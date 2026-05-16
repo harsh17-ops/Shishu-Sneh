@@ -1,5 +1,6 @@
 package com.shishusneh.app.utils
 
+import com.shishusneh.app.data.entity.EmergencyGuideEntity
 import com.shishusneh.app.data.entity.FeedingTipEntity
 import com.shishusneh.app.data.entity.MilestoneEntity
 import com.shishusneh.app.data.entity.VaccinationEntity
@@ -126,5 +127,40 @@ object SeedData {
         10f to 8.5f,
         11f to 8.7f,
         12f to 8.9f
+    )
+
+    fun emergencyGuides(): List<EmergencyGuideEntity> = listOf(
+        EmergencyGuideEntity(
+            category = "Fever",
+            titleEn = "High fever warning",
+            titleHi = "तेज बुखार चेतावनी",
+            contentEn = "If fever is persistent, baby is too sleepy, not feeding, or breathing fast, seek urgent medical care.",
+            contentHi = "यदि बुखार लगातार रहे, बच्चा बहुत सुस्त हो, दूध न पी रहा हो या तेज सांस ले रहा हो, तुरंत डॉक्टर से संपर्क करें।",
+            priority = 5
+        ),
+        EmergencyGuideEntity(
+            category = "Breathing",
+            titleEn = "Breathing difficulty",
+            titleHi = "सांस लेने में कठिनाई",
+            contentEn = "Fast breathing, chest pulling in, blue lips, or grunting are danger signs. Go to the nearest hospital immediately.",
+            contentHi = "तेज सांस, छाती धंसना, होंठ नीले पड़ना या घरघराहट खतरे के संकेत हैं। तुरंत अस्पताल जाएं।",
+            priority = 5
+        ),
+        EmergencyGuideEntity(
+            category = "Dehydration",
+            titleEn = "Dehydration signs",
+            titleHi = "पानी की कमी के संकेत",
+            contentEn = "Very few wet diapers, dry mouth, crying without tears, or repeated vomiting need prompt care.",
+            contentHi = "बहुत कम गीले डायपर, मुंह सूखना, बिना आंसू रोना या बार-बार उल्टी होने पर तुरंत इलाज लें।",
+            priority = 4
+        ),
+        EmergencyGuideEntity(
+            category = "Seizure",
+            titleEn = "If baby has jerking or seizure",
+            titleHi = "यदि बच्चे को झटके आएं",
+            contentEn = "Place baby safely on one side, do not put anything in the mouth, and get emergency medical care.",
+            contentHi = "बच्चे को सुरक्षित करवट पर लिटाएं, मुंह में कुछ न डालें, और तुरंत इमरजेंसी उपचार लें।",
+            priority = 5
+        )
     )
 }

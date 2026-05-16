@@ -7,6 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.shishusneh.app.ui.components.AppScaffold
+import com.shishusneh.app.ui.screens.advanced.AppointmentsScreen
+import com.shishusneh.app.ui.screens.advanced.EmergencyGuidanceScreen
+import com.shishusneh.app.ui.screens.advanced.FamilyAccessScreen
+import com.shishusneh.app.ui.screens.advanced.SmartCareScreen
 import com.shishusneh.app.ui.screens.feeding.FeedingGuideScreen
 import com.shishusneh.app.ui.screens.growth.GrowthScreen
 import com.shishusneh.app.ui.screens.home.DashboardScreen
@@ -35,7 +39,8 @@ fun AppNavGraph(
             ) { padding ->
                 DashboardScreen(
                     paddingValues = padding,
-                    onOpenFeedingGuide = { navController.navigate(Screen.FeedingGuide.route) }
+                    onOpenFeedingGuide = { navController.navigate(Screen.FeedingGuide.route) },
+                    onOpenSmartCare = { navController.navigate(Screen.SmartCare.route) }
                 )
             }
         }
@@ -88,7 +93,11 @@ fun AppNavGraph(
             ) { padding ->
                 SettingsScreen(
                     paddingValues = padding,
-                    onEditProfile = { navController.navigate(Screen.Profile.route) }
+                    onEditProfile = { navController.navigate(Screen.Profile.route) },
+                    onOpenSmartCare = { navController.navigate(Screen.SmartCare.route) },
+                    onOpenAppointments = { navController.navigate(Screen.Appointments.route) },
+                    onOpenFamilyAccess = { navController.navigate(Screen.FamilyAccess.route) },
+                    onOpenEmergency = { navController.navigate(Screen.Emergency.route) }
                 )
             }
         }
@@ -102,6 +111,46 @@ fun AppNavGraph(
                 androidx.compose.foundation.layout.Box(modifier = Modifier.padding(padding)) {
                     ProfileEditorScreen(onSaved = { navController.popBackStack() })
                 }
+            }
+        }
+        composable(Screen.SmartCare.route) {
+            AppScaffold(
+                navController = navController,
+                title = "Smart Care",
+                showBottomBar = false,
+                onSettingsClick = { navController.navigate(Screen.Settings.route) }
+            ) { padding ->
+                SmartCareScreen(paddingValues = padding)
+            }
+        }
+        composable(Screen.Appointments.route) {
+            AppScaffold(
+                navController = navController,
+                title = "Appointments",
+                showBottomBar = false,
+                onSettingsClick = { navController.navigate(Screen.Settings.route) }
+            ) { padding ->
+                AppointmentsScreen(paddingValues = padding)
+            }
+        }
+        composable(Screen.FamilyAccess.route) {
+            AppScaffold(
+                navController = navController,
+                title = "Family Access",
+                showBottomBar = false,
+                onSettingsClick = { navController.navigate(Screen.Settings.route) }
+            ) { padding ->
+                FamilyAccessScreen(paddingValues = padding)
+            }
+        }
+        composable(Screen.Emergency.route) {
+            AppScaffold(
+                navController = navController,
+                title = "Emergency Help",
+                showBottomBar = false,
+                onSettingsClick = { navController.navigate(Screen.Settings.route) }
+            ) { padding ->
+                EmergencyGuidanceScreen(paddingValues = padding)
             }
         }
     }

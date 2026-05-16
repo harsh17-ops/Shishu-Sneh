@@ -2,9 +2,12 @@ package com.shishusneh.app.repository
 
 import android.util.Log
 import com.google.gson.GsonBuilder
+import com.shishusneh.app.data.dao.AppointmentDao
 import com.shishusneh.app.data.dao.BabyProfileDao
 import com.shishusneh.app.data.dao.FeedingTipDao
+import com.shishusneh.app.data.dao.FamilyMemberDao
 import com.shishusneh.app.data.dao.MilestoneDao
+import com.shishusneh.app.data.dao.VaccineScanDao
 import com.shishusneh.app.data.dao.VaccinationDao
 import com.shishusneh.app.data.dao.WeightEntryDao
 import com.shishusneh.app.data.entity.BabyProfileEntity
@@ -26,6 +29,9 @@ class BabyRepository @Inject constructor(
     private val vaccinationDao: VaccinationDao,
     private val milestoneDao: MilestoneDao,
     private val feedingTipDao: FeedingTipDao,
+    private val appointmentDao: AppointmentDao,
+    private val familyMemberDao: FamilyMemberDao,
+    private val vaccineScanDao: VaccineScanDao,
     private val settingsRepository: SettingsRepository,
     private val vaccineScheduler: VaccineScheduler
 ) {
@@ -148,7 +154,10 @@ class BabyRepository @Inject constructor(
             "profile" to profile,
             "weights" to weightEntryDao.getAllForBaby(profile.id),
             "vaccinations" to vaccinationDao.getForBaby(profile.id),
-            "milestones" to milestoneDao.getForBaby(profile.id)
+            "milestones" to milestoneDao.getForBaby(profile.id),
+            "appointments" to appointmentDao.getForBaby(profile.id),
+            "familyMembers" to familyMemberDao.observeForBaby(profile.id).firstOrNull().orEmpty(),
+            "vaccineScans" to vaccineScanDao.observeForBaby(profile.id).firstOrNull().orEmpty()
         )
         return GsonBuilder().setPrettyPrinting().create().toJson(data)
     }

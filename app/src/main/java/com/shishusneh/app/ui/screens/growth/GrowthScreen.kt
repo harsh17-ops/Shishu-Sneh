@@ -89,6 +89,12 @@ fun GrowthScreen(
                     referenceLine = state.whoReference
                 )
             }
+            item {
+                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(text = state.percentileLabel, style = MaterialTheme.typography.titleLarge)
+                    Text(text = state.percentileInterpretation, style = MaterialTheme.typography.bodyLarge)
+                }
+            }
             if (state.entries.isEmpty()) {
                 item {
                     EmptyStateView(
