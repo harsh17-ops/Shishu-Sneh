@@ -1,4 +1,4 @@
-# Shishu-Sneh
+# Shishu Sneh - Web Edition
 
 **Production-style Android app for a baby's first-year healthcare journey.**
 
