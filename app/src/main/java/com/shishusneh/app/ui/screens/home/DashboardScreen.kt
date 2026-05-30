@@ -28,6 +28,7 @@ import com.shishusneh.app.utils.DateUtils
 fun DashboardScreen(
     paddingValues: PaddingValues,
     onOpenFeedingGuide: () -> Unit,
+    onOpenSmartCare: () -> Unit,
     viewModel: DashboardViewModel = hiltViewModel()
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -80,6 +81,9 @@ fun DashboardScreen(
         )
         Button(onClick = onOpenFeedingGuide) {
             Text("Open Feeding Guide")
+        }
+        Button(onClick = onOpenSmartCare) {
+            Text("Open Smart Care Hub")
         }
     }
 }

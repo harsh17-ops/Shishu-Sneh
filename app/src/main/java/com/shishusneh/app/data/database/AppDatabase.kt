@@ -2,16 +2,24 @@ package com.shishusneh.app.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.shishusneh.app.data.dao.AppointmentDao
 import com.shishusneh.app.data.dao.BabyProfileDao
+import com.shishusneh.app.data.dao.EmergencyGuideDao
 import com.shishusneh.app.data.dao.FeedingTipDao
+import com.shishusneh.app.data.dao.FamilyMemberDao
 import com.shishusneh.app.data.dao.MilestoneDao
 import com.shishusneh.app.data.dao.UserDao
+import com.shishusneh.app.data.dao.VaccineScanDao
 import com.shishusneh.app.data.dao.VaccinationDao
 import com.shishusneh.app.data.dao.WeightEntryDao
+import com.shishusneh.app.data.entity.AppointmentEntity
 import com.shishusneh.app.data.entity.BabyProfileEntity
+import com.shishusneh.app.data.entity.EmergencyGuideEntity
 import com.shishusneh.app.data.entity.FeedingTipEntity
+import com.shishusneh.app.data.entity.FamilyMemberEntity
 import com.shishusneh.app.data.entity.MilestoneEntity
 import com.shishusneh.app.data.entity.UserEntity
+import com.shishusneh.app.data.entity.VaccineScanEntity
 import com.shishusneh.app.data.entity.VaccinationEntity
 import com.shishusneh.app.data.entity.WeightEntryEntity
 
@@ -22,9 +30,13 @@ import com.shishusneh.app.data.entity.WeightEntryEntity
         WeightEntryEntity::class,
         VaccinationEntity::class,
         MilestoneEntity::class,
-        FeedingTipEntity::class
+        FeedingTipEntity::class,
+        AppointmentEntity::class,
+        FamilyMemberEntity::class,
+        EmergencyGuideEntity::class,
+        VaccineScanEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -34,4 +46,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun vaccinationDao(): VaccinationDao
     abstract fun milestoneDao(): MilestoneDao
     abstract fun feedingTipDao(): FeedingTipDao
+    abstract fun appointmentDao(): AppointmentDao
+    abstract fun familyMemberDao(): FamilyMemberDao
+    abstract fun emergencyGuideDao(): EmergencyGuideDao
+    abstract fun vaccineScanDao(): VaccineScanDao
 }

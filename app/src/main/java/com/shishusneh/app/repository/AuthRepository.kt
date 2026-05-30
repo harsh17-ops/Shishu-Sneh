@@ -9,7 +9,10 @@ import com.shishusneh.app.data.entity.UserEntity
 import com.shishusneh.app.utils.PasswordUtils
 import com.shishusneh.app.utils.Validators
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -23,7 +26,24 @@ class AuthRepository @Inject constructor(
 ) {
     private val currentUserKey = longPreferencesKey("current_user_id")
 
-    val currentUserId: Flow<Long?> = context.sessionDataStore.data.map { it[currentUserKey] }
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val currentUserId: Flow<Long?> = context.sessionDataStore.data.flatMapLatest { prefs ->
+        val id = prefs[currentUserKey]
+        flow {
+            if (id != null) {
+                val userExists = userDao.getById(id) != null
+                if (userExists) {
+                    emit(id)
+                } else {
+                    // Stale session detected, clear it
+                    logout()
+                    emit(null)
+                }
+            } else {
+                emit(null)
+            }
+        }
+    }
 
     suspend fun signup(fullName: String, email: String, password: String): Result<Unit> = runCatching {
         require(fullName.isNotBlank()) { "Name is required" }

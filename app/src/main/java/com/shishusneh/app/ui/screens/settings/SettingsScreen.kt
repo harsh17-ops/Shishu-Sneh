@@ -33,6 +33,10 @@ import kotlinx.coroutines.launch
 fun SettingsScreen(
     paddingValues: PaddingValues,
     onEditProfile: () -> Unit,
+    onOpenSmartCare: () -> Unit,
+    onOpenAppointments: () -> Unit,
+    onOpenFamilyAccess: () -> Unit,
+    onOpenEmergency: () -> Unit,
     viewModel: SettingsViewModel = hiltViewModel()
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -92,6 +96,22 @@ fun SettingsScreen(
 
         Button(onClick = onEditProfile, modifier = Modifier.fillMaxWidth()) {
             Text("Edit baby profile")
+        }
+
+        Button(onClick = onOpenSmartCare, modifier = Modifier.fillMaxWidth()) {
+            Text("Open Smart Care Hub")
+        }
+
+        Button(onClick = onOpenAppointments, modifier = Modifier.fillMaxWidth()) {
+            Text("Doctor Appointments")
+        }
+
+        Button(onClick = onOpenFamilyAccess, modifier = Modifier.fillMaxWidth()) {
+            Text("Family Access")
+        }
+
+        Button(onClick = onOpenEmergency, modifier = Modifier.fillMaxWidth()) {
+            Text("Emergency Guidance")
         }
 
         Button(

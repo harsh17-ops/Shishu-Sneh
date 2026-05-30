@@ -3,15 +3,16 @@ package com.shishusneh.app.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shishusneh.app.data.entity.WeightEntryEntity
+import com.shishusneh.app.repository.AdvancedCareRepository
 import com.shishusneh.app.repository.AuthRepository
 import com.shishusneh.app.repository.BabyRepository
-import com.shishusneh.app.utils.DateUtils
 import com.shishusneh.app.utils.SeedData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
@@ -23,6 +24,8 @@ data class GrowthUiState(
     val dobMillis: Long = System.currentTimeMillis(),
     val entries: List<WeightEntryEntity> = emptyList(),
     val whoReference: List<Pair<Float, Float>> = SeedData.whoReferenceWeights(),
+    val percentileLabel: String = "",
+    val percentileInterpretation: String = "",
     val error: String? = null,
     val saveSuccessAt: Long? = null
 )
@@ -30,7 +33,8 @@ data class GrowthUiState(
 @HiltViewModel
 class GrowthViewModel @Inject constructor(
     private val authRepository: AuthRepository,
-    private val babyRepository: BabyRepository
+    private val babyRepository: BabyRepository,
+    private val advancedCareRepository: AdvancedCareRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(GrowthUiState())
@@ -47,12 +51,15 @@ class GrowthViewModel @Inject constructor(
                             _uiState.value = GrowthUiState(loading = false)
                         } else {
                             babyRepository.observeWeights(profile.id).collect { entries ->
+                                val insight = advancedCareRepository.percentileInsight(userId)
                                 _uiState.value = GrowthUiState(
                                     loading = false,
                                     babyId = profile.id,
                                     babyName = profile.name,
                                     dobMillis = profile.dobMillis,
                                     entries = entries,
+                                    percentileLabel = insight.percentileLabel,
+                                    percentileInterpretation = insight.interpretation,
                                     saveSuccessAt = _uiState.value.saveSuccessAt
                                 )
                             }
